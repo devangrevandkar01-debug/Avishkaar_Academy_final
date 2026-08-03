@@ -2,24 +2,33 @@
   "version": 2,
   "buildCommand": "npm install",
   "outputDirectory": "frontend",
+
   "rewrites": [
-    { "source": "/api/health",          "destination": "/api/health" },
-    { "source": "/api/inquiry",         "destination": "/api/inquiry" },
-    { "source": "/api/inquiries",       "destination": "/api/inquiries" },
-    { "source": "/api/inquiries/:id",   "destination": "/api/inquiries?id=:id" },
-    { "source": "/api/data/notices/all","destination": "/api/data/notices?all=1" },
-    { "source": "/api/data/:resource",        "destination": "/api/data/:resource" },
-    { "source": "/api/data/:resource/:id",    "destination": "/api/data/:resource?id=:id" },
-    { "source": "/admin/(.*)",          "destination": "/admin/index.html" },
-    { "source": "/admin",               "destination": "/admin/index.html" }
+    { "source": "/api/health", "destination": "/api/health" },
+    { "source": "/api/inquiry", "destination": "/api/inquiry" },
+    { "source": "/api/inquiries", "destination": "/api/inquiries" },
+    { "source": "/api/inquiries/:id", "destination": "/api/inquiries?id=:id" },
+    { "source": "/api/data/notices/all", "destination": "/api/data/notices?all=1" },
+    { "source": "/api/data/:resource", "destination": "/api/data/:resource" },
+    { "source": "/api/data/:resource/:id", "destination": "/api/data/:resource?id=:id" }
   ],
+
   "headers": [
     {
       "source": "/api/(.*)",
       "headers": [
-        { "key": "Access-Control-Allow-Origin",  "value": "*" },
-        { "key": "Access-Control-Allow-Methods", "value": "GET, POST, PUT, PATCH, DELETE, OPTIONS" },
-        { "key": "Access-Control-Allow-Headers", "value": "Content-Type, Authorization" }
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, POST, PUT, PATCH, DELETE, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Content-Type, Authorization"
+        }
       ]
     }
   ]
