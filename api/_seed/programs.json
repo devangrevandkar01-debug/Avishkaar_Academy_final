@@ -1,0 +1,79 @@
+[
+  {
+    "id": "prog-5-10",
+    "icon": "5–10",
+    "iconGold": false,
+    "title": "Class 5th – 10th Foundation",
+    "category": "school",
+    "description": "Mathematics, Science, English & Social Studies — built around strong fundamentals, not rote memorising.",
+    "features": ["Concept-first teaching", "Daily practice papers", "Foundation building for competitive exams"],
+    "duration": "Duration: Full academic year, weekday batches",
+    "defence": false
+  },
+  {
+    "id": "prog-11-12",
+    "icon": "11–12",
+    "iconGold": false,
+    "title": "Class 11th – 12th Science",
+    "category": "school",
+    "description": "Physics, Chemistry, Mathematics & Biology with focused board preparation alongside entrance-exam readiness.",
+    "features": ["Board + competitive dual track", "Weekly & monthly tests", "Personal mentorship"],
+    "duration": "Duration: Full academic year, weekday & weekend batches",
+    "defence": false
+  },
+  {
+    "id": "prog-jee",
+    "icon": "JEE",
+    "iconGold": false,
+    "title": "JEE (Main & Advanced)",
+    "category": "competitive",
+    "description": "Engineering entrance coaching with full syllabus coverage and regular mock exams modelled on the real test.",
+    "features": ["Full mock exam series", "Doubt-solving sessions", "Performance analytics"],
+    "duration": "Duration: 1–2 year track",
+    "defence": false
+  },
+  {
+    "id": "prog-neet",
+    "icon": "NEET",
+    "iconGold": false,
+    "title": "NEET",
+    "category": "competitive",
+    "description": "Medical entrance preparation with deep focus on Biology, Chemistry and Physics fundamentals.",
+    "features": ["Subject-expert faculty", "Test series with rank analysis", "Parent progress reports"],
+    "duration": "Duration: 1–2 year track",
+    "defence": false
+  },
+  {
+    "id": "prog-cet",
+    "icon": "CET",
+    "iconGold": false,
+    "title": "MHT-CET",
+    "category": "competitive",
+    "description": "State CET preparation aligned to the Maharashtra board syllabus, built for students juggling boards and CET together.",
+    "features": ["Board-aligned curriculum", "Small batch sizes", "WhatsApp performance updates"],
+    "duration": "Duration: Class 11–12, integrated",
+    "defence": false
+  },
+  {
+    "id": "prog-nda",
+    "icon": "NDA",
+    "iconGold": true,
+    "title": "NDA Preparation",
+    "category": "competitive",
+    "description": "\"Desh ki seva ka junoon jaga hai?\" — complete NDA written exam preparation plus SSB interview orientation.",
+    "features": ["Complete syllabus coverage", "Regular tests & analysis", "Personalised mentorship"],
+    "duration": "Special batch · Admissions open for 2026",
+    "defence": true
+  },
+  {
+    "id": "prog-navy",
+    "icon": "⚓",
+    "iconGold": true,
+    "title": "Merchant Navy (IMU-CET)",
+    "category": "competitive",
+    "description": "\"Marine engineering ka sapna dekh rahe ho?\" — guided preparation for IMU-CET, your route into life at sea.",
+    "features": ["Complete syllabus coverage", "Regular tests & analysis", "100% focus on success"],
+    "duration": "Special batch · Admissions open for 2026",
+    "defence": true
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "id": "testi-001",
+    "author": "Parent · Class X, State Board batch",
+    "text": "What changed for us was the weekly test report on WhatsApp — we always knew exactly where our daughter stood, long before the actual exam.",
+    "stars": 5,
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "testi-002",
+    "author": "Parent · NDA aspirant",
+    "text": "The NDA batch is run like an actual mission — syllabus, mocks, mentorship, all on schedule. My son finally has a routine he sticks to.",
+    "stars": 5,
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "testi-003",
+    "author": "Student · XII Science, NEET track",
+    "text": "Small batches made the difference. The faculty actually knew which topics I was weak in, and we fixed those first.",
+    "stars": 5,
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "testi-004",
+    "author": "Parent · Merchant Navy aspirant",
+    "text": "We hadn't even heard of IMU-CET properly before this. The counselling session alone was worth joining for.",
+    "stars": 5,
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  }
+]

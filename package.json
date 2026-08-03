@@ -1,0 +1,12 @@
+{
+  "name": "avishkaar-academy",
+  "version": "1.0.0",
+  "description": "Avishkaar Academy — frontend + serverless API on Vercel",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@upstash/redis": "^1.38.0"
+  }
+}

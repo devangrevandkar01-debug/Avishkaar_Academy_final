@@ -1,0 +1,26 @@
+[
+  {
+    "id": "fac-suraj",
+    "name": "Suraj Sir",
+    "avatar": "SS",
+    "image": "",
+    "role": "NDA & Defence Coaching Lead",
+    "meta": "Mathematics & Reasoning · NDA written exam specialist"
+  },
+  {
+    "id": "fac-rane",
+    "name": "Rane Sir",
+    "avatar": "RS",
+    "image": "",
+    "role": "Science & CET Faculty",
+    "meta": "Physics · MHT-CET & board examination preparation"
+  },
+  {
+    "id": "fac-dnyaneshwar",
+    "name": "Dnyaneshwar Sir",
+    "avatar": "DS",
+    "image": "",
+    "role": "JEE & Merchant Navy Faculty",
+    "meta": "Mathematics · IMU-CET & JEE entrance preparation"
+  }
+]

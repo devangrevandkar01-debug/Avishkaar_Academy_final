@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel — Avishkaar Academy</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="../assets/images/emblem.png">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<!-- ===================== LOGIN SCREEN ===================== -->
+<div id="loginScreen">
+  <div class="login-box">
+    <div class="login-box__logo">
+      <div class="login-box__logo-icon">🎓</div>
+      <div class="login-box__logo-text">
+        <strong>Avishkaar Academy</strong>
+        <span>Admin Panel</span>
+      </div>
+    </div>
+    <h1>Welcome Back</h1>
+    <p>Enter your admin token to access the dashboard.</p>
+    <div class="login-field">
+      <label for="adminToken">Admin Token</label>
+      <input type="password" id="adminToken" placeholder="Enter your token..." autocomplete="current-password">
+    </div>
+    <button class="login-btn" id="loginBtn">Sign In →</button>
+    <p id="loginError"></p>
+  </div>
+</div>
+
+<!-- ===================== APP SHELL ===================== -->
+<div id="appShell">
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__logo">
+      <div class="sidebar__logo-icon">🎓</div>
+      <div class="sidebar__logo-text">
+        <strong>Avishkaar Academy</strong>
+        <span>Admin Panel</span>
+      </div>
+    </div>
+
+    <nav class="sidebar__nav">
+      <div class="nav-section-label">Overview</div>
+      <div class="nav-item is-active" data-page="dashboard">
+        <span class="nav-item__icon">📊</span> Dashboard
+      </div>
+      <div class="nav-item" data-page="inquiries">
+        <span class="nav-item__icon">📝</span> Inquiries
+        <span class="nav-badge" id="newInquiriesBadge" style="display:none">0</span>
+      </div>
+
+      <div class="nav-section-label" style="margin-top:10px">Content</div>
+      <div class="nav-item" data-page="toppers">
+        <span class="nav-item__icon">🏆</span> Toppers
+      </div>
+      <div class="nav-item" data-page="faculty">
+        <span class="nav-item__icon">👨‍🏫</span> Faculty
+      </div>
+      <div class="nav-item" data-page="testimonials">
+        <span class="nav-item__icon">💬</span> Testimonials
+      </div>
+      <div class="nav-item" data-page="programs">
+        <span class="nav-item__icon">📚</span> Programs
+      </div>
+      <div class="nav-item" data-page="gallery">
+        <span class="nav-item__icon">🖼️</span> Gallery
+      </div>
+      <div class="nav-item" data-page="notices">
+        <span class="nav-item__icon">📢</span> Notices
+      </div>
+      <div class="nav-item" data-page="contact">
+        <span class="nav-item__icon">📍</span> Contact Info
+      </div>
+      <div class="nav-item" data-page="stats">
+        <span class="nav-item__icon">📈</span> Hero Stats
+      </div>
+
+      <div class="nav-section-label" style="margin-top:10px">System</div>
+      <div class="nav-item" data-page="settings">
+        <span class="nav-item__icon">⚙️</span> Settings
+      </div>
+    </nav>
+
+    <div class="sidebar__footer">
+      <button class="logout-btn" id="logoutBtn">
+        <span>🚪</span> Sign Out
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <div class="main-wrap">
+    <header class="topbar">
+      <div>
+        <div class="topbar__title" id="topbarTitle">Dashboard</div>
+        <div class="topbar__sub" id="topbarSub">Avishkaar Academy · Admin</div>
+      </div>
+      <div class="topbar__actions">
+        <a href="/" target="_blank" class="btn-ghost" style="font-size:.82rem;">
+          🌐 View Site
+        </a>
+        <button class="menu-toggle" id="menuToggle">☰ Menu</button>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <!-- ===== DASHBOARD ===== -->
+      <section class="page is-active" id="page-dashboard">
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-card__icon">📝</div>
+            <div class="stat-card__label">Total Inquiries</div>
+            <div class="stat-card__value" id="dash-totalInquiries">—</div>
+            <div class="stat-card__sub">All time form submissions</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__icon">🔔</div>
+            <div class="stat-card__label">New Leads</div>
+            <div class="stat-card__value" id="dash-newLeads">—</div>
+            <div class="stat-card__sub">Not yet contacted</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__icon">🏆</div>
+            <div class="stat-card__label">Toppers Listed</div>
+            <div class="stat-card__value" id="dash-toppers">—</div>
+            <div class="stat-card__sub">Wall of Fame entries</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__icon">💬</div>
+            <div class="stat-card__label">Testimonials</div>
+            <div class="stat-card__value" id="dash-testimonials">—</div>
+            <div class="stat-card__sub">Published reviews</div>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:20px;margin-top:4px;">
+          <div class="table-card">
+            <div class="table-card__header">
+              <div>
+                <h3>Recent Inquiries</h3>
+                <p>Last 5 form submissions</p>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Student</th>
+                    <th>Course</th>
+                    <th>Mobile</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody id="recentInquiriesTable">
+                  <tr><td colspan="5" class="td-primary" style="text-align:center;opacity:.5">Loading...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="table-card">
+            <div class="table-card__header">
+              <div>
+                <h3>Quick Actions</h3>
+                <p>Common admin tasks</p>
+              </div>
+            </div>
+            <div style="padding:20px;display:flex;flex-direction:column;gap:10px;">
+              <button class="btn-ghost" style="justify-content:flex-start;" onclick="navigate('inquiries')">📝 View All Inquiries</button>
+              <button class="btn-ghost" style="justify-content:flex-start;" onclick="navigate('toppers'); openAddTopperModal()">🏆 Add New Topper</button>
+              <button class="btn-ghost" style="justify-content:flex-start;" onclick="navigate('faculty'); openAddFacultyModal()">👨‍🏫 Add Faculty Member</button>
+              <button class="btn-ghost" style="justify-content:flex-start;" onclick="navigate('testimonials'); openAddTestimonialModal()">💬 Add Testimonial</button>
+              <button class="btn-ghost" style="justify-content:flex-start;" onclick="navigate('notices'); openAddNoticeModal()">📢 Post a Notice</button>
+              <button class="btn-ghost" style="justify-content:flex-start;" onclick="navigate('stats')">📈 Update Hero Stats</button>
+              <button class="btn-primary" style="justify-content:flex-start;margin-top:6px;" onclick="exportInquiriesCSV()">⬇️ Export Inquiries CSV</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== INQUIRIES ===== -->
+      <section class="page" id="page-inquiries">
+        <div class="table-card">
+          <div class="table-card__header">
+            <div>
+              <h3>Form Inquiries</h3>
+              <p>All student/parent inquiry submissions</p>
+            </div>
+            <div class="table-toolbar">
+              <input type="search" class="search-input" id="inquirySearch" placeholder="Search name, mobile…">
+              <select class="filter-select" id="inquiryStatusFilter">
+                <option value="">All Statuses</option>
+                <option value="new">New</option>
+                <option value="contacted">Contacted</option>
+                <option value="followup">Follow-up</option>
+              </select>
+              <select class="filter-select" id="inquiryCourseFilter">
+                <option value="">All Courses</option>
+                <option>Class 5–10</option>
+                <option>Class 11–12</option>
+                <option>JEE</option>
+                <option>NEET</option>
+                <option>CET</option>
+                <option>NDA</option>
+                <option>Merchant Navy</option>
+              </select>
+              <button class="btn-ghost" onclick="exportInquiriesCSV()">⬇️ Export CSV</button>
+              <button class="btn-primary" onclick="loadInquiries()">↻ Refresh</button>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Student</th>
+                  <th>Parent</th>
+                  <th>Mobile</th>
+                  <th>Email</th>
+                  <th>Course</th>
+                  <th>Status</th>
+                  <th>Date</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="inquiriesTable">
+                <tr><td colspan="8" class="td-primary" style="text-align:center;opacity:.5">Loading...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== TOPPERS ===== -->
+      <section class="page" id="page-toppers">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">
+          <div>
+            <h2 style="font-size:1.2rem;">Wall of Fame — Toppers</h2>
+            <p style="color:var(--text-muted);font-size:.85rem;margin-top:4px;">Manage student achievers displayed on the public site</p>
+          </div>
+          <button class="btn-primary" onclick="openAddTopperModal()">+ Add Topper</button>
+        </div>
+        <div class="cards-grid" id="toppersGrid">
+          <div class="empty-state"><div class="empty-state__icon">⏳</div><h4>Loading...</h4></div>
+        </div>
+      </section>
+
+      <!-- ===== FACULTY ===== -->
+      <section class="page" id="page-faculty">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">
+          <div>
+            <h2 style="font-size:1.2rem;">Faculty Team</h2>
+            <p style="color:var(--text-muted);font-size:.85rem;margin-top:4px;">Manage faculty profiles displayed on the public site</p>
+          </div>
+          <button class="btn-primary" onclick="openAddFacultyModal()">+ Add Faculty</button>
+        </div>
+        <div class="cards-grid" id="facultyGridAdmin">
+          <div class="empty-state"><div class="empty-state__icon">⏳</div><h4>Loading...</h4></div>
+        </div>
+      </section>
+
+      <!-- ===== TESTIMONIALS ===== -->
+      <section class="page" id="page-testimonials">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">
+          <div>
+            <h2 style="font-size:1.2rem;">Testimonials</h2>
+            <p style="color:var(--text-muted);font-size:.85rem;margin-top:4px;">Parent and student reviews displayed on the public site</p>
+          </div>
+          <button class="btn-primary" onclick="openAddTestimonialModal()">+ Add Testimonial</button>
+        </div>
+        <div class="cards-grid" id="testimonialsGrid">
+          <div class="empty-state"><div class="empty-state__icon">⏳</div><h4>Loading...</h4></div>
+        </div>
+      </section>
+
+      <!-- ===== PROGRAMS ===== -->
+      <section class="page" id="page-programs">
+        <div style="margin-bottom:24px;">
+          <h2 style="font-size:1.2rem;">Academic Programs</h2>
+          <p style="color:var(--text-muted);font-size:.85rem;margin-top:4px;">Edit program descriptions, features, and durations</p>
+        </div>
+        <div id="programsList">
+          <div class="empty-state"><div class="empty-state__icon">⏳</div><h4>Loading...</h4></div>
+        </div>
+      </section>
+
+      <!-- ===== GALLERY ===== -->
+      <section class="page" id="page-gallery">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">
+          <div>
+            <h2 style="font-size:1.2rem;">Gallery Photos</h2>
+            <p style="color:var(--text-muted);font-size:.85rem;margin-top:4px;">Manage photos displayed in the academy gallery</p>
+          </div>
+          <button class="btn-primary" onclick="openAddGalleryModal()">+ Add Gallery Image</button>
+        </div>
+        <div class="cards-grid" id="galleryGridAdmin">
+          <div class="empty-state"><div class="empty-state__icon">⏳</div><h4>Loading...</h4></div>
+        </div>
+      </section>
+
+      <!-- ===== NOTICES ===== -->
+      <section class="page" id="page-notices">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">
+          <div>
+            <h2 style="font-size:1.2rem;">Notices & Announcements</h2>
+            <p style="color:var(--text-muted);font-size:.85rem;margin-top:4px;">Active notices appear in the marquee on the public site</p>
+          </div>
+          <button class="btn-primary" onclick="openAddNoticeModal()">+ Add Notice</button>
+        </div>
+        <div id="noticesList">
+          <div class="empty-state"><div class="empty-state__icon">⏳</div><h4>Loading...</h4></div>
+        </div>
+      </section>
+
+      <!-- ===== CONTACT INFO ===== -->
+      <section class="page" id="page-contact">
+        <div style="max-width:680px;margin-bottom:28px;">
+          <h2 style="font-size:1.2rem;">Contact Details & Links</h2>
+          <p style="color:var(--text-muted);font-size:.85rem;margin-top:4px;">Edit address, phone numbers, email, hours, and WhatsApp link displayed on the website</p>
+        </div>
+        <div class="table-card" style="max-width:680px;padding:24px;">
+          <div class="field">
+            <label>Address</label>
+            <input type="text" id="contact-address" placeholder="Address...">
+          </div>
+          <div class="field">
+            <label>Phone Details (multiline)</label>
+            <textarea id="contact-phoneDetails" rows="3" placeholder="Suraj Sir — 9702928223..."></textarea>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label>Email</label>
+              <input type="email" id="contact-email" placeholder="admissions@...">
+            </div>
+            <div class="field">
+              <label>WhatsApp Number</label>
+              <input type="text" id="contact-whatsapp" placeholder="918434879737">
+            </div>
+          </div>
+          <div class="field">
+            <label>Working Hours</label>
+            <input type="text" id="contact-hours" placeholder="Monday – Saturday, 9:00 AM – 8:00 PM">
+          </div>
+          <div class="field">
+            <label>Google Maps Embed URL</label>
+            <input type="text" id="contact-mapUrl" placeholder="https://www.google.com/maps?q=...">
+          </div>
+          <div style="margin-top:20px;">
+            <button class="btn-primary" onclick="saveContactInfo()">💾 Save Contact Details</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== STATS ===== -->
+      <section class="page" id="page-stats">
+        <div style="margin-bottom:28px;">
+          <h2 style="font-size:1.2rem;">Hero Statistics</h2>
+          <p style="color:var(--text-muted);font-size:.85rem;margin-top:4px;">These 4 numbers animate on the homepage hero section</p>
+        </div>
+        <div class="stats-editor" id="statsEditor">
+          <div class="stat-edit-card">
+            <label>Students Trained</label>
+            <input type="number" id="stat-students" placeholder="1200">
+          </div>
+          <div class="stat-edit-card">
+            <label>Success Rate (%)</label>
+            <input type="number" id="stat-successRate" placeholder="96" min="0" max="100">
+          </div>
+          <div class="stat-edit-card">
+            <label>Years of Excellence</label>
+            <input type="number" id="stat-years" placeholder="8">
+          </div>
+          <div class="stat-edit-card">
+            <label>Exam Tracks Covered</label>
+            <input type="number" id="stat-tracks" placeholder="6">
+          </div>
+        </div>
+        <div style="margin-top:24px;display:flex;gap:12px;">
+          <button class="btn-primary" onclick="saveStats()">💾 Save Stats</button>
+          <button class="btn-ghost" onclick="loadStats()">↻ Reload</button>
+        </div>
+      </section>
+
+      <!-- ===== SETTINGS ===== -->
+      <section class="page" id="page-settings">
+        <div style="max-width:540px;">
+          <h2 style="font-size:1.2rem;margin-bottom:6px;">Settings</h2>
+          <p style="color:var(--text-muted);font-size:.85rem;margin-bottom:28px;">Session and configuration information</p>
+
+          <div class="table-card" style="margin-bottom:20px;">
+            <div class="table-card__header"><h3>Session Info</h3></div>
+            <div style="padding:20px 24px;display:flex;flex-direction:column;gap:14px;">
+              <div>
+                <div style="font-size:.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:5px;">Current Token (masked)</div>
+                <div class="td-mono" style="color:var(--gold-light)" id="maskedToken">•••••••••••••</div>
+              </div>
+              <div>
+                <div style="font-size:.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:5px;">Server</div>
+                <div class="td-mono" id="serverUrl" style="color:var(--text-secondary)"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="table-card">
+            <div class="table-card__header"><h3>Change Admin Token</h3></div>
+            <div style="padding:20px 24px;">
+              <p style="font-size:.85rem;color:var(--text-muted);margin-bottom:16px;">
+                Changing the token here only updates your current session. To permanently change the token, update the <code style="color:var(--gold-light);">ADMIN_TOKEN</code> environment variable in your <code style="color:var(--gold-light);">.env</code> file and restart the server.
+              </p>
+              <div class="field">
+                <label>New Token</label>
+                <input type="password" id="newTokenInput" placeholder="Enter new token…">
+              </div>
+              <button class="btn-primary" onclick="changeSessionToken()">Update Session Token</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<!-- ===================== MODALS ===================== -->
+
+<!-- Add/Edit Topper Modal -->
+<div class="modal-overlay" id="topperModal">
+  <div class="modal">
+    <div class="modal__header">
+      <h3 id="topperModalTitle">Add Topper</h3>
+      <button class="modal__close" onclick="closeModal('topperModal')">×</button>
+    </div>
+    <div class="modal__body">
+      <input type="hidden" id="topperEditId">
+      <div class="field-row">
+        <div class="field">
+          <label>Student Name *</label>
+          <input type="text" id="topper-name" placeholder="e.g. Om Chavan">
+        </div>
+        <div class="field">
+          <label>Rank Label</label>
+          <input type="text" id="topper-rank" placeholder="e.g. Rank 1 · Science Stream">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Score *</label>
+          <input type="text" id="topper-score" placeholder="e.g. 100 or 85.50">
+        </div>
+        <div class="field">
+          <label>Score Unit</label>
+          <input type="text" id="topper-scoreUnit" placeholder="e.g. /100 or %">
+        </div>
+      </div>
+      <div class="field">
+        <label>Photo Image Path or URL</label>
+        <input type="text" id="topper-image" placeholder="e.g. assets/images/topper-om.jpg">
+      </div>
+      <div class="field">
+        <label>Subject & School</label>
+        <input type="text" id="topper-subject" placeholder="e.g. Mathematics · K.J. Somaiya">
+      </div>
+      <div class="field">
+        <label>Quote / Remark</label>
+        <textarea id="topper-quote" placeholder="A short highlight quote about this student's achievement…"></textarea>
+      </div>
+      <div class="field-check">
+        <input type="checkbox" id="topper-featured">
+        <label for="topper-featured">Mark as Featured (displayed prominently in the centre)</label>
+      </div>
+    </div>
+    <div class="modal__footer">
+      <button class="btn-ghost" onclick="closeModal('topperModal')">Cancel</button>
+      <button class="btn-primary" onclick="saveTopper()">💾 Save Topper</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add/Edit Faculty Modal -->
+<div class="modal-overlay" id="facultyModal">
+  <div class="modal">
+    <div class="modal__header">
+      <h3 id="facultyModalTitle">Add Faculty</h3>
+      <button class="modal__close" onclick="closeModal('facultyModal')">×</button>
+    </div>
+    <div class="modal__body">
+      <input type="hidden" id="facultyEditId">
+      <div class="field-row">
+        <div class="field">
+          <label>Faculty Name *</label>
+          <input type="text" id="fac-name" placeholder="e.g. Suraj Sir">
+        </div>
+        <div class="field">
+          <label>Initials / Avatar Code</label>
+          <input type="text" id="fac-avatar" placeholder="e.g. SS">
+        </div>
+      </div>
+      <div class="field">
+        <label>Role / Title *</label>
+        <input type="text" id="fac-role" placeholder="e.g. NDA & Defence Coaching Lead">
+      </div>
+      <div class="field">
+        <label>Subjects & Specialties</label>
+        <input type="text" id="fac-meta" placeholder="e.g. Mathematics & Reasoning · NDA written exam specialist">
+      </div>
+      <div class="field">
+        <label>Photo Image Path (optional)</label>
+        <input type="text" id="fac-image" placeholder="e.g. assets/images/suraj-sir.jpg">
+      </div>
+    </div>
+    <div class="modal__footer">
+      <button class="btn-ghost" onclick="closeModal('facultyModal')">Cancel</button>
+      <button class="btn-primary" onclick="saveFaculty()">💾 Save Faculty</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add Gallery Image Modal -->
+<div class="modal-overlay" id="galleryModal">
+  <div class="modal">
+    <div class="modal__header">
+      <h3>Add Gallery Image</h3>
+      <button class="modal__close" onclick="closeModal('galleryModal')">×</button>
+    </div>
+    <div class="modal__body">
+      <div class="field">
+        <label>Image Path or URL *</label>
+        <input type="text" id="gal-image" placeholder="e.g. assets/images/nda-insta-post.jpg">
+      </div>
+      <div class="field">
+        <label>Caption / Alt Text</label>
+        <input type="text" id="gal-alt" placeholder="e.g. Felicitation of toppers">
+      </div>
+      <div class="field-check">
+        <input type="checkbox" id="gal-tall">
+        <label for="gal-tall">Tall Format (3:4 aspect ratio portrait)</label>
+      </div>
+    </div>
+    <div class="modal__footer">
+      <button class="btn-ghost" onclick="closeModal('galleryModal')">Cancel</button>
+      <button class="btn-primary" onclick="saveGalleryItem()">💾 Add Image</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add Testimonial Modal -->
+<div class="modal-overlay" id="testimonialModal">
+  <div class="modal">
+    <div class="modal__header">
+      <h3>Add Testimonial</h3>
+      <button class="modal__close" onclick="closeModal('testimonialModal')">×</button>
+    </div>
+    <div class="modal__body">
+      <div class="field">
+        <label>Author / Attribution *</label>
+        <input type="text" id="testi-author" placeholder="e.g. Parent · Class X, State Board batch">
+      </div>
+      <div class="field">
+        <label>Testimonial Text *</label>
+        <textarea id="testi-text" rows="4" placeholder="What did the parent or student say?"></textarea>
+      </div>
+      <div class="field">
+        <label>Star Rating</label>
+        <select id="testi-stars">
+          <option value="5">★★★★★ (5 Stars)</option>
+          <option value="4">★★★★☆ (4 Stars)</option>
+          <option value="3">★★★☆☆ (3 Stars)</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal__footer">
+      <button class="btn-ghost" onclick="closeModal('testimonialModal')">Cancel</button>
+      <button class="btn-primary" onclick="saveTestimonial()">💾 Save Testimonial</button>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Program Modal -->
+<div class="modal-overlay" id="programModal">
+  <div class="modal">
+    <div class="modal__header">
+      <h3 id="programModalTitle">Edit Program</h3>
+      <button class="modal__close" onclick="closeModal('programModal')">×</button>
+    </div>
+    <div class="modal__body">
+      <input type="hidden" id="programEditId">
+      <div class="field">
+        <label>Program Title</label>
+        <input type="text" id="prog-title">
+      </div>
+      <div class="field">
+        <label>Description</label>
+        <textarea id="prog-description" rows="3"></textarea>
+      </div>
+      <div class="field">
+        <label>Features (one per line)</label>
+        <textarea id="prog-features" rows="4" placeholder="Feature 1&#10;Feature 2&#10;Feature 3"></textarea>
+      </div>
+      <div class="field">
+        <label>Duration / Batch Info</label>
+        <input type="text" id="prog-duration" placeholder="e.g. Duration: 1–2 year track">
+      </div>
+    </div>
+    <div class="modal__footer">
+      <button class="btn-ghost" onclick="closeModal('programModal')">Cancel</button>
+      <button class="btn-primary" onclick="saveProgram()">💾 Save Program</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add Notice Modal -->
+<div class="modal-overlay" id="noticeModal">
+  <div class="modal">
+    <div class="modal__header">
+      <h3>Add Notice / Announcement</h3>
+      <button class="modal__close" onclick="closeModal('noticeModal')">×</button>
+    </div>
+    <div class="modal__body">
+      <div class="field">
+        <label>Notice Text *</label>
+        <textarea id="notice-text" rows="3" placeholder="e.g. 🎯 NDA Batch 2026 — Admissions Open! Limited Seats."></textarea>
+      </div>
+      <div class="field-check">
+        <input type="checkbox" id="notice-active" checked>
+        <label for="notice-active">Active (visible in marquee immediately)</label>
+      </div>
+    </div>
+    <div class="modal__footer">
+      <button class="btn-ghost" onclick="closeModal('noticeModal')">Cancel</button>
+      <button class="btn-primary" onclick="saveNotice()">📢 Post Notice</button>
+    </div>
+  </div>
+</div>
+
+<!-- Inquiry Detail Modal -->
+<div class="modal-overlay" id="inquiryModal">
+  <div class="modal">
+    <div class="modal__header">
+      <h3>Inquiry Details</h3>
+      <button class="modal__close" onclick="closeModal('inquiryModal')">×</button>
+    </div>
+    <div class="modal__body" id="inquiryModalBody">
+    </div>
+    <div class="modal__footer">
+      <button class="btn-ghost" onclick="closeModal('inquiryModal')">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast Container -->
+<div id="toastContainer"></div>
+
+<script src="admin.js"></script>
+</body>
+</html>

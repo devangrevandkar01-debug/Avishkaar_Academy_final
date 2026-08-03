@@ -1,0 +1,38 @@
+[
+  {
+    "id": "gal-01",
+    "image": "assets/images/topper-shreya.jpg",
+    "alt": "Felicitation of Rank 1 science student",
+    "tall": true
+  },
+  {
+    "id": "gal-02",
+    "image": "assets/images/board-toppers.jpg",
+    "alt": "School superstars wall of fame event",
+    "tall": false
+  },
+  {
+    "id": "gal-03",
+    "image": "assets/images/science-toppers.jpg",
+    "alt": "Science toppers felicitation",
+    "tall": false
+  },
+  {
+    "id": "gal-04",
+    "image": "assets/images/topper-om.jpg",
+    "alt": "Felicitation of Mathematics topper",
+    "tall": true
+  },
+  {
+    "id": "gal-05",
+    "image": "assets/images/nda-insta-post.jpg",
+    "alt": "NDA batch promotional event",
+    "tall": false
+  },
+  {
+    "id": "gal-06",
+    "image": "assets/images/topper-sanchita.jpg",
+    "alt": "Felicitation of Biology topper",
+    "tall": true
+  }
+]

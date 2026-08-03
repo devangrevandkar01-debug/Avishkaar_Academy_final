@@ -1,0 +1,38 @@
+[
+  {
+    "id": "topper-om",
+    "name": "Om Chavan",
+    "rank": "Rank 1",
+    "score": "100",
+    "scoreUnit": "/100",
+    "subject": "Mathematics · K.J. Somaiya",
+    "quote": "A perfect century — the kind of score that comes from daily practice papers, not last-minute luck.",
+    "image": "assets/images/topper-om.jpg",
+    "featured": false,
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "topper-shreya",
+    "name": "Shreya Shukla",
+    "rank": "Rank 1 · Science Stream",
+    "score": "85.50",
+    "scoreUnit": "%",
+    "subject": "92/100 Chemistry · 90/100 Biology · K.J. Somaiya",
+    "quote": "Aiming for NEET — and this result says she's exactly on course.",
+    "image": "assets/images/topper-shreya.jpg",
+    "featured": true,
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "topper-sanchita",
+    "name": "Sanchita Ghadge",
+    "rank": "Rank 1",
+    "score": "88",
+    "scoreUnit": "/100",
+    "subject": "Biology · MD College",
+    "quote": "Consistency in weekly tests turned into a near-perfect board score.",
+    "image": "assets/images/topper-sanchita.jpg",
+    "featured": false,
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  }
+]

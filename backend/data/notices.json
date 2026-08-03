@@ -1,0 +1,14 @@
+[
+  {
+    "id": "notice-001",
+    "text": "🎯 NDA Special Batch 2026 — Admissions Open! Limited Seats.",
+    "active": true,
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "notice-002",
+    "text": "⚓ Merchant Navy (IMU-CET) Batch Starting Soon — Book Your Free Demo Today!",
+    "active": true,
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  }
+]
