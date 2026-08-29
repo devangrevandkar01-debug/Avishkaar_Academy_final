@@ -294,13 +294,29 @@ module.exports = async (req, res) => {
   cors(res);
   if (req.method === 'OPTIONS') return res.status(204).end();
 
-  // resource = last path segment, e.g. "toppers" from /api/data/toppers
-  const parts    = req.url.split('?')[0].split('/').filter(Boolean);
-  const resource = parts[parts.length - 1];
+  // Support both:
+// /api/data/faculty
+// /api/data/faculty/fac-suraj
 
-  const handler = HANDLERS[resource];
-  if (!handler) return res.status(404).json({ success: false, message: `Unknown resource: ${resource}` });
+const parts = req.url.split('?')[0].split('/').filter(Boolean);
 
+const dataIndex = parts.indexOf('data');
+const resource = dataIndex >= 0 ? parts[dataIndex + 1] : null;
+const pathId = dataIndex >= 0 ? parts[dataIndex + 2] : null;
+
+// Pass the ID to the handler through req.query
+if (pathId && !req.query.id) {
+  req.query.id = pathId;
+}
+
+const handler = HANDLERS[resource];
+
+if (!handler) {
+  return res.status(404).json({
+    success: false,
+    message: `Unknown resource: ${resource}`
+  });
+}
   try {
     await handler(req, res);
   } catch (err) {
