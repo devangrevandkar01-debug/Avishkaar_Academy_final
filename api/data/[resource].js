@@ -294,17 +294,12 @@ module.exports = async (req, res) => {
   cors(res);
   if (req.method === 'OPTIONS') return res.status(204).end();
 
-  // Support both:
-// /api/data/faculty
-// /api/data/faculty/fac-suraj
-
 const parts = req.url.split('?')[0].split('/').filter(Boolean);
 
 const dataIndex = parts.indexOf('data');
 const resource = dataIndex >= 0 ? parts[dataIndex + 1] : null;
 const pathId = dataIndex >= 0 ? parts[dataIndex + 2] : null;
 
-// Pass the ID to the handler through req.query
 if (pathId && !req.query.id) {
   req.query.id = pathId;
 }
